@@ -1,0 +1,437 @@
+@charset "utf-8";
+/** 公用样式表**/
+html {
+	height: auto;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+}
+body {
+	width: 100%;
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	text-align: left;
+	color: #929292;
+	font: 12px/1.5 "微软雅黑", "宋体", arial;
+}
+
+*{
+	padding: 0;
+	margin: 0;
+	-moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* webkit, opera, IE9 鼠标滑过 */
+::selection { background:#0d6fb8; color: #fff; }
+/* mozilla firefox  鼠标滑过  */
+::-moz-selection { background:#0d6fb8; color: #fff; }
+
+
+/** 滚动条 **/
+::-webkit-scrollbar-track-piece {width:8px;background-color:#f8f8f8;}
+::-webkit-scrollbar {width:8px;background-color:#2882e8;}
+::-webkit-scrollbar-thumb {width:8px;background-color:#aeaeae;}
+::-webkit-scrollbar-thumb:hover {width:8px;background-color:#2882e8;}
+
+
+h1, h2, h3, h4, h5, h6, p, figure, form {
+	margin: 0; padding: 0;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+img {
+	border: 0;
+	vertical-align: middle;
+	-ms-interpolation-mode: bicubic;
+}
+
+/** a属性 **/
+a {
+	text-decoration: none;
+	outline:none; blr:expression(this.onFocus=this.blur());
+	-moz-transition: all .3s ease-in;
+	-webkit-transition: all .3s ease-in;
+	-o-transition: all .3s ease-in;
+	-ms-transition: all .3s ease-in;
+	transition: all .3s ease-in;
+}
+a:focus {
+	color: #FFFFFF;
+	outline: none; 
+	text-decoration: none;
+}
+a:hover {
+	color: #333;
+	outline: none;
+	text-decoration: none;
+}
+
+
+/** 标签大小 **/
+h1 {
+	font-size: 18px;
+	line-height: 30px;
+}
+h2 {
+	font-size: 16px;
+	line-height: 30px;
+}
+h3 {
+	line-height: 14px;
+	line-height: 30px;
+}
+h3, h4, h5, h6 {
+	font-size: 12px;
+	line-height: 30px;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+
+
+/* ul ol dl */  
+ul, li, ol {
+	margin: 0;
+	padding: 0;
+	list-style: none outside none;
+}
+ul.has-style li, ol li {
+	margin-left: 25px;
+}
+ul.has-style li {
+	list-style: disc;
+}
+ol li {
+	list-style: decimal;
+}
+ul.inline-style li {
+	float: left;
+	display: inline;
+}
+dl {
+	margin-bottom: 18px;
+}
+dt {
+	font-weight: bold;
+}
+dd {
+	margin: 0 0 0 9px;
+	padding: 0;
+}
+svg:not(:root) {
+	overflow: hidden;
+}
+
+
+/* clearfix */  
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+.clearfix:after {
+	clear: both;
+	overflow: hidden;
+}
+.clearfix {
+	zoom: 1;
+}
+
+
+/* ------------------------------------------------- 
+ * form 
+ * ------------------------------------------------- 
+*/  
+button, input, select, textarea {
+	font-size: 100%;
+	font-family: tahoma;
+	margin: 0;
+	outline: 0 none;
+	vertical-align: baseline;
+ 	*vertical-align: middle;
+}
+textarea {
+	overflow: auto;
+	vertical-align: top;
+	resize: none;
+}
+button, input {
+	line-height: normal;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"], .submit-btn {
+	-webkit-appearance: button;
+	cursor: pointer;
+ *overflow: visible;
+}
+button[disabled], input[disabled], .disable {
+	cursor: default;
+}
+input[type="checkbox"], input[type="radio"], .form-radio, .form-checkbox {
+	box-sizing: border-box;
+	padding: 0;
+ *height: 13px;
+ *width: 13px;
+}
+fieldset {
+	border: 1px solid #c0c0c0;
+	margin: 0 2px 18px;
+	padding: 0.35em 0.625em 0.75em;
+}
+legend {
+	border: 0;
+	padding: 0;
+	white-space: normal;
+ *margin-left: -7px;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+ border: 0;
+ padding: 0;
+}
+
+input{-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+          transition: border linear 0.2s, box-shadow linear 0.2s;}
+
+
+/*input:focus{border-color: rgba(82, 168, 236, 0.8);outline: 0;outline: thin dotted \9; IE6-9 
+ -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 10px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 10px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 10px rgba(82, 168, 236, 0.6);
+}*/
+
+button, html input[type="button"], input[type="submit"] {
+  display: inline-block;
+  *display: inline;
+  padding: 4px 12px;
+  margin-bottom: 0;
+  *margin-left: .3em;
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #0088cc;
+  *background-color: #0088cc;
+  background-image: -moz-linear-gradient(top, #0088cc, #006e68);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#006e68));
+  background-image: -webkit-linear-gradient(top, #0088cc, #006e68);
+  background-image: -o-linear-gradient(top, #0088cc, #006e68);
+  background-image: linear-gradient(to bottom, #0088cc, #006e68);
+  background-repeat: repeat-x;
+  border: 1px solid #bbbbbb;
+  *border: 0;
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-bottom-color: #006e68;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  *zoom: 1;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	
+}
+
+button:hover, html input[type="button"]:hover, input[type="submit"]:hover,
+button:active, html input[type="button"]:active, input[type="submit"]:active,
+button.active, html input[type="button"].active, input[type="submit"].active,
+button.disabled, html input[type="button"].disabled, input[type="submit"].disabled,
+button[disabled], html input[type="button"][disabled], input[type="submit"][disabled] {
+  color: #fff;
+  background-color: #006e68;
+  *background-color: #006e68;
+}
+
+button:active, html input[type="button"]:active, input[type="submit"]:active,
+button.active , html input[type="button"].active , input[type="submit"].active {
+  background-color: #cccccc \9;
+}
+
+button:first-child, html input[type="button"]:first-child, input[type="submit"]:first-child {
+  *margin-left: 0;
+}
+
+button:hover , html input[type="button"]:hover , input[type="submit"]:hover {
+  text-decoration: none;
+  -webkit-transition: background-position 0.1s linear;
+     -moz-transition: background-position 0.1s linear;
+       -o-transition: background-position 0.1s linear;
+          transition: background-position 0.1s linear;
+}
+button:focus{
+	background: #ff6000;
+}
+button:focus, html input[type="button"]:focus, input[type="submit"]:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+button.active, html input[type="button"].active, input[type="submit"].active,
+button:active, html input[type="button"]:active, input[type="submit"]:active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+
+
+
+select,
+input[type="file"] {
+  height: 30px;
+  /* In IE7, the height of the select element cannot be changed by height, only font-size */
+
+  *margin-top: 4px;
+  /* For IE7, add top margin to align select with labels */
+
+  line-height: 30px;
+}
+
+select {
+  width:auto;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+	padding: 0px 5px;
+}
+
+select[multiple],
+select[size] {
+  height: auto;
+}
+
+select:focus,
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.uneditable-input,
+.uneditable-textarea {
+  color: #999999;
+  cursor: not-allowed;
+  background-color: #fcfcfc;
+  border-color: #cccccc;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+}
+
+
+
+/* ------------------------------------------------- 
+ * css3 & html5 
+ * ------------------------------------------------- 
+*/  
+/* html5 */  
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+	display: block;
+}
+audio, canvas, video {
+	display: inline-block;
+ *display: inline;
+ *zoom: 1;
+}
+audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+input[type="search"] {
+	-webkit-appearance: textfield;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+:-moz-placeholder {
+ color: #bbb;
+}
+::-webkit-input-placeholder {
+ color: #bbb;
+}
+
+
+/* ------------------------------------------------- 
+ * 非常见标签 
+ * ------------------------------------------------- 
+*/  
+abbr[title] {
+	border-bottom: 1px dotted;
+}
+b, strong {
+	font-weight: bold;
+}
+blockquote {
+	margin: 1em 40px;
+}
+dfn {
+	font-style: italic;
+}
+mark {
+	background: #ff0;
+	color: #444;
+}
+code, kbd, pre, samp {
+	font-family: monospace, serif;
+	_font-family: 'courier new', monospace;
+	font-size: 1em;
+}
+pre {
+	margin: 1em 0;
+	white-space: pre;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+q {
+	quotes: none;
+}
+q:before, q:after {
+	content: '';
+	content: none;
+}
+small {
+	font-size: 80%;
+}
+sub, sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+sup {
+	top: -0.5em;
+}
+sub {
+	bottom: -0.25em;
+}
+.ellipsis {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden
+}
+.break {
+	word-break: break-all;
+	word-wrap: break-word
+}

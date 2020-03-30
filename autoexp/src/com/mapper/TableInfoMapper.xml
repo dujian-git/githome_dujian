@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.TableInfoMapper">
+  <resultMap id="TableInfoResultMap" type="com.model.TableInfo">
+    <result column="table_name" jdbcType="VARCHAR" property="table_name" />
+    <result column="table_type" jdbcType="VARCHAR" property="table_type" />
+    <result column="comments" jdbcType="VARCHAR" property="comments" />
+    <result column="ddl" jdbcType="CLOB" property="ddl" />
+    <result column="index_name" jdbcType="VARCHAR" property="index_name" />
+    <result column="index_type" jdbcType="VARCHAR" property="index_type" />
+    <result column="table_owner" jdbcType="VARCHAR" property="table_owner" />
+    <result column="uniqueness" jdbcType="VARCHAR" property="uniqueness" />
+    <result column="columns" jdbcType="VARCHAR" property="columns" />
+  </resultMap>
+  
+  <select id="getTableInfoWithDdlAndComList" parameterType="Map" resultMap="TableInfoResultMap">
+  	select utc.*, DBMS_METADATA.GET_DDL('TABLE',utc.table_name) as ddl from user_tab_comments utc
+  	<where>
+		<if test="table_type!=null and table_type!=''">
+			and table_type=#{table_type}
+		</if>
+	</where>
+  </select>
+  
+  <select id="getTableInfoWithIndexList" parameterType="Map" resultMap="TableInfoResultMap">
+  	select ui.index_name,ui.index_type,ui.table_owner,ui.table_name,ui.uniqueness,uic.INDEX_NAME
+  		,listagg(uic.COLUMN_NAME, ',') within group (order by column_position) as columns
+  	from user_indexes ui, user_ind_columns uic 
+	where ui.index_name=uic.INDEX_NAME
+	<if test="table_name!=null and table_name!=''">
+		and ui.table_name=#{table_name}
+	</if>
+	group by ui.index_name,ui.index_type,ui.table_owner,ui.table_name,ui.uniqueness,uic.INDEX_NAME
+  </select>
+</mapper>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.DbMsgMapper">
+  <resultMap id="DbMsgResultMap" type="com.model.DbMsg">
+    <id column="db_id" jdbcType="VARCHAR" property="id" />
+    <result column="db_sys" jdbcType="VARCHAR" property="sys" />
+    <result column="db_base" jdbcType="VARCHAR" property="base" />
+    <result column="db_env" jdbcType="VARCHAR" property="env" />
+    <result column="db_ip" jdbcType="VARCHAR" property="ip" />
+    <result column="db_sernm" jdbcType="VARCHAR" property="sernm" />
+    <result column="db_port" jdbcType="VARCHAR" property="port" />
+    <result column="db_user" jdbcType="VARCHAR" property="user" />
+    <result column="db_pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="crt_tm" jdbcType="DATE" property="crtTm" />
+    <result column="crtTmStr" jdbcType="VARCHAR" property="crtTmStr" />
+  </resultMap>
+  
+    <delete id="deleteDbMsg" parameterType="String">
+   	 	delete from t_db_msg
+   	 	<where>
+            <if test="_parameter != null and _parameter != ''">
+                db_id = #{id}
+            </if>
+        </where>
+  	</delete>
+
+    <insert id="addDbMsg" parameterType="com.model.DbMsg">
+	    insert  into  t_db_msg 
+	    (db_id, db_sys, db_base, db_env, db_ip, db_port, db_user, db_pwd, crt_tm, db_sernm)
+	    values
+		(
+			#{id}, #{sys},
+			 #{base},#{env}, #{ip}, #{port},
+			  #{user},#{pwd}, sysdate, #{sernm}
+	    )
+
+	</insert>
+
+    <update id="updateDbMsg" parameterType="com.model.DbMsg">
+
+        update t_db_msg
+        <set>
+	        <if test="sys != null and sys != ''">
+	            db_sys = #{sys},
+	        </if>
+	        <if test="base != null and base != ''">
+	            db_base = #{base},
+	        </if>
+	        <if test="env != null and env != ''">
+	            db_env = #{env},
+	        </if>
+	        <if test="ip != null and ip != ''">
+	            db_ip = #{ip},
+	        </if>
+	        <if test="port != null and port != ''">
+	            db_port = #{port},
+	        </if>
+	        <if test="user != null and user != ''">
+	            db_user = #{user},
+	        </if>
+	        <if test="pwd != null and pwd != ''">
+	            db_pwd = #{pwd},
+	        </if>
+	        <if test="sernm != null and sernm != ''">
+	            db_sernm = #{sernm}
+	        </if>
+        </set>
+        <where>
+            <if test="id != null">
+                db_id = #{id}
+            </if>
+        </where>
+    </update>
+    
+    <select id="getDbMsgList" parameterType="Map" resultMap="DbMsgResultMap">
+		select d.*, to_char(d.crt_tm,'YYYY-MM-DD') as crtTmStr 
+		from t_db_msg d
+		<where>
+			<if test="sys != null and sys != ''">
+				and db_sys like '%' || #{sys} || '%'
+			</if>
+			<if test="ip != null and ip != ''">
+				and db_ip = #{ip}
+			</if>
+			<if test="base != null and base != ''">
+				and db_base = #{base}
+			</if>
+		</where>
+	</select>
+
+	<select id="findDbMsgById" parameterType="String" resultMap="DbMsgResultMap">
+		select * from t_db_msg
+		<where>
+			<if test="_parameter != null and _parameter != ''">
+				and db_id = #{id}
+			</if>
+		</where>
+	</select>
+</mapper>
